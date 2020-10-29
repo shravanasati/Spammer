@@ -5,5 +5,6 @@ the author will not be responsible for it.*
 
 **Spammer** - A python bot which helps you accomplish your spamming goals.
 
-*External modles required:*
+*External modules/dependencies required:*
 - pyautogui --> ```pip install pyautogui```
+- kungfu_panda.txt --> Find it above.
