@@ -8,3 +8,6 @@ the author will not be responsible for it.*
 *External modules/dependencies required:*
 - pyautogui --> ```pip install pyautogui```
 - kungfu_panda.txt --> Find it above.
+
+
+Make sure you place the kungfu_panda.txt in the same directory as of spammer.py or provide full path of it.
