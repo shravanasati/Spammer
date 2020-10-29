@@ -1,6 +1,7 @@
-# TO DO
-# SPAM ON TEXT FILE, EMAIL AND OTHER
-# SPAM WAYS - KUNGFU PANDA OMVIE SCRIPT, CUSTOM
+"""
+By using this code, written in Python, you agree that you will use it for educational purpose only and in case you use it for some illegal activity, 
+the author will not be responsible for it.
+"""
 
 import smtplib, pyautogui, time, os
 pyautogui.FAILSAFE = True
