@@ -11,8 +11,8 @@ class Spammer:
     """
     Spammer class which has functions to spam in file, email and other ways.
     """
-
-    def spam_script_file(self, filepath, filename):
+    @staticmethod
+    def spam_script_file(filepath, filename):
         try:
             os.chdir(filepath)
             f = open(f"{filename}", 'a')
@@ -28,8 +28,8 @@ class Spammer:
         finally:
             os.chdir(cwd)
 
-
-    def spam_file(self, filepath, filename, keyword, times):
+    @staticmethod
+    def spam_file(filepath, filename, keyword, times):
         try:
             os.chdir(filepath)
             with open(f"{filename}", 'a') as f:
@@ -42,8 +42,8 @@ class Spammer:
         finally:
             os.chdir(cwd)
 
-
-    def spam_email(self, keyword, times):
+    @staticmethod
+    def spam_email(keyword, times):
         try:
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.ehlo()
@@ -61,8 +61,8 @@ class Spammer:
         except Exception as e:
             print(f"Following error occured:\n{e}")
             
-
-    def spam_other(self, keyword, times):
+    @staticmethod
+    def spam_other(keyword, times):
         print("Starting spamming in 10 seconds...")
         time.sleep(10)
         for i in range(times):
@@ -101,7 +101,7 @@ class Spammer:
             meme = int(input())
 
             if meme == 1:
-                script_file = open('kungfu_panda.txt', 'r')
+                script_file = open(r'C:\\Users\\Lenovo\\Documents\\Python Codes\\kungfu_panda.txt', 'r')
                 script = script_file.read()
                 self.spam_email(script, 1)
 
@@ -116,11 +116,12 @@ class Spammer:
 
         # YOUTUBE COMMENT SPAM
         elif app==3:
-            print("Open the youtube video (on browser) with comment section on.")
+            print("Open the youtube video with comment section on.")
             keyword = input("Enter your keyword: ")
             times = int(input("How many times: "))
             print("It will wait for 10 seconds before sending the spam because of youtube live comment rules.")
-            for i in range(times):
+            time.sleep(5)
+            for _ in range(times):
                 self.spam_other(keyword, times)
                 time.sleep(10)
 
@@ -132,7 +133,7 @@ class Spammer:
             
             if meme == 1:
                 check = input("Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
-                with open('kungfu_panda.txt') as f:
+                with open(r'C:\\Users\\Lenovo\\Documents\\Python Codes\\kungfu_panda.txt') as f:
                     script = f.read()
                 self.spam_other(script, 1)
 
