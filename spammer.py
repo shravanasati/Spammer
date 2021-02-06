@@ -132,7 +132,7 @@ class Spammer:
             meme = int(input())
 
             if meme == 1:
-                script_file = open(r'C:\\Users\\Lenovo\\Documents\\Python Codes\\kungfu_panda.txt', 'r')
+                script_file = open(r'kungfu_panda.txt', 'r')
                 script = script_file.read()
                 self.spam_email(script, 1)
 
@@ -165,7 +165,7 @@ class Spammer:
                 username = input("Enter your Instagram username: ")
                 password = input("Enter your Instagram password: ")
                 host = input("Enter the Instagram ID of the one you want to spam: ")
-                with open(r'C:\\Users\\Lenovo\\Documents\\Python Codes\\kungfu_panda.txt') as f:
+                with open(r'kungfu_panda.txt') as f:
                     script = f.read()
                 self.spam_insta(username, password, host, script, 1)
 
@@ -191,7 +191,7 @@ class Spammer:
             
             if meme == 1:
                 check = input("Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
-                with open(r'C:\\Users\\Lenovo\\Documents\\Python Codes\\kungfu_panda.txt') as f:
+                with open(r'kungfu_panda.txt') as f:
                     script = f.read()
                 self.spam_other(script, 1)
 
