@@ -6,8 +6,14 @@ the author will not be responsible for it._**
 **Spammer** - A python bot which helps you accomplish your spamming goals.
 
 *External modules/dependencies required:*
-- pyautogui --> ```pip install pyautogui```
-- kungfu_panda.txt --> Find it above.
+- pyautogui 
+- helium
+- kungfu_panda.txt --> Find it in the repository.
 
+To install all the dependencies at once, execute:
 
-Make sure you place the kungfu_panda.txt in the same directory as of spammer.py or provide full path to it.
+```
+pip install -r requirements.txt 
+```
+
+Make sure you place the 'kungfu_panda.txt' in the same directory as of spammer.py or provide full path to it.
