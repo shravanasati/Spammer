@@ -7,7 +7,6 @@ the author will not be responsible for it._**
 
 *External modules/dependencies required:*
 - pyautogui 
-- helium
 - kungfu_panda.txt --> Find it in the repository.
 
 To install all the dependencies at once, execute:

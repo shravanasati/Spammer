@@ -4,22 +4,6 @@ root = tk.Tk()
 root.title("The Ultimate Spammer")
 root.geometry("600x650")
 
-# def repeat_options():
-
-#     foptions = ["Kungfu Panda script", "Custom keyword or phrase"]
-
-#     flabel = tk.Label(root, text="What do you wish to spam?")
-#     flabel.config(font=("Arial", 16))
-#     flabel.pack()
-
-#     fwish= tk.StringVar()
-#     fwish.set("Kungfu Panda script")
-#     fdrop = tk.OptionMenu( root , fwish , *foptions )
-#     fdrop.config(font=("Arial", 12))
-#     fdrop.pack()
-
-#     return fwish.get()
-
 
 def show():
 
