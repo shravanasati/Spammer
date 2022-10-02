@@ -53,16 +53,20 @@ def show():
                 ktext2.config(font=("Arial", 16))
                 ktext2.pack(padx=10, pady=10)
 
-                time.sleep(60)
-                try:
-                    sp = spammer.Spammer()
-                    file = ktext1.get("1.0", "end")
-                    path = ktext2.get("1.0", "end")
-                    sp.spam_script_file(path, file)
-                except Exception as e:
-                    print(e)
-                else:
-                    success()
+                fbtn1 = tk.Button(root, text="START SPAMMING", command=spam_file_k)
+                fbtn1.config(font=("Arial", 12))
+                fbtn1.pack()
+
+                def spam_file_k():
+                    try:
+                        sp = spammer.Spammer()
+                        file = ktext1.get("1.0", "end")
+                        path = ktext2.get("1.0", "end")
+                        sp.spam_script_file(path, file)
+                    except Exception as e:
+                        print(e)
+                    else:
+                        success()
 
             elif var == "Custom keyword or phrase":
                 cuslabel1 = tk.Label(root, text="Enter file name:")
@@ -97,18 +101,22 @@ def show():
                 custext4.config(font=("Arial", 16))
                 custext4.pack(padx=10, pady=10)
 
-                time.sleep(60)
-                try:
-                    sp = spammer.Spammer()
-                    file = custext1.get("1.0", "end")
-                    path = custext2.get("1.0", "end")
-                    keyword = custext3.get("1.0", "end")
-                    times = custext4.get("1.0", "end")
-                    sp.spam_file(path, file, keyword, times)
-                except Exception as e:
-                    print(e)
-                else:
-                    success()
+                fbtn2 = tk.Button(root, text="START SPAMMING", command=spam_file_c)
+                fbtn2.config(font=("Arial", 12))
+                fbtn2.pack()
+
+                def spam_file_c():
+                    try:
+                        sp = spammer.Spammer()
+                        file = custext1.get("1.0", "end")
+                        path = custext2.get("1.0", "end")
+                        keyword = custext3.get("1.0", "end")
+                        times = custext4.get("1.0", "end")
+                        sp.spam_file(path, file, keyword, times)
+                    except Exception as e:
+                        print(e)
+                    else:
+                        success()
 
 
         fbutton = tk.Button( root , text = "SUBMIT" , command = fshow)
@@ -190,22 +198,27 @@ def show():
                 etext2.config(font=("Arial", 16))
                 etext2.pack(padx=10, pady=10)
 
+                ebtn1 = tk.Button(root, text="START SPAMMING", command=spam_email_c)
+                ebtn1.config(font=("Arial", 12))
+                ebtn1.pack()
 
-                keyword = etext1.get("1.0", "end")
-                times = etext2.get("1.0", "end")
-                
-                try:
-                    sp = spammer.Spammer()
-                    sp.spam_email(f"{keyword}\n", times, host, your_email, password, subject)
-                except Exception as e:
-                    print(e)
-                else:
-                    success()
+                def spam_email_c():
+
+                    keyword = etext1.get("1.0", "end")
+                    times = etext2.get("1.0", "end")
+                    
+                    try:
+                        sp = spammer.Spammer()
+                        sp.spam_email(f"{keyword}\n", times, host, your_email, password, subject)
+                    except Exception as e:
+                        print(e)
+                    else:
+                        success()
 
             elif var == "Kungfu Panda script":
-                script_file = open(r'kungfu_panda.txt', 'r')
-                script = script_file.read()
                 try:
+                    script_file = open(r'kungfu_panda.txt', 'r')
+                    script = script_file.read()
                     sp = spammer.Spammer()
                     sp.spam_email(script, 1, host, your_email, password, subject)
                 except Exception as e:
@@ -239,22 +252,29 @@ def show():
         yttext2.config(font=("Arial", 16))
         yttext2.pack(padx=10, pady=10)
 
-        ytlabel0 = tk.Label(root, text="It will wait for 10 seconds before sending the spam because of youtube live comment rules.")
-        ytlabel0.config(font=("Arial", 14), wraplength=600)
-        ytlabel0.pack()
+        ybtn1 = tk.Button(root, text="START SPAMMING", command=spam_yt)
+        ybtn1.config(font=("Arial", 12))
+        ybtn1.pack()
 
-        try:
-            sp = spammer.Spammer()
-            keyword = yttext1.get("1.0", "end")
-            times = yttext2.get("1.0", "end")
-            time.sleep(10)
-            for _ in range(times):
-                sp.spam_other(keyword, times)
-                time.sleep(5)
-        except Exception as e:
-            print(e)
-        else:
-            success()
+
+        def spam_yt():
+
+            ytlabel0 = tk.Label(root, text="It will wait for 10 seconds before sending the spam because of youtube live comment rules.")
+            ytlabel0.config(font=("Arial", 14), wraplength=600)
+            ytlabel0.pack()
+
+            try:
+                sp = spammer.Spammer()
+                keyword = yttext1.get("1.0", "end")
+                times = yttext2.get("1.0", "end")
+                time.sleep(10)
+                for _ in range(times):
+                    sp.spam_other(keyword, times)
+                    time.sleep(5)
+            except Exception as e:
+                print(e)
+            else:
+                success()
 
     elif clicked.get() == "Others":
 
@@ -293,20 +313,26 @@ def show():
                 otext2.config(font=("Arial", 16))
                 otext2.pack(padx=10, pady=10)
 
-                olabel = tk.Label(root, text="Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
-                olabel.config(font=("Arial", 14), wraplength=600)
-                olabel.pack()
 
-                try:
-                    sp = spammer.Spammer()
-                    keyword = otext1.get("1.0", "end")
-                    times = otext2.get("1.0", "end")
-                    sp.spam_other(keyword+"\n", times)
-                except Exception as e:
-                    print(e)
-                else:
-                    success()
-            
+                obtn1 = tk.Button(root, text="START SPAMMING", command=spam_others_c)
+                obtn1.config(font=("Arial", 12))
+                obtn1.pack()
+
+                def spam_others_c():
+
+                    olabel = tk.Label(root, text="Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
+                    olabel.config(font=("Arial", 14), wraplength=600)
+                    olabel.pack()
+                    try:
+                        sp = spammer.Spammer()
+                        keyword = otext1.get("1.0", "end")
+                        times = otext2.get("1.0", "end")
+                        sp.spam_other(keyword+"\n", times)
+                    except Exception as e:
+                        print(e)
+                    else:
+                        success()
+                
             elif var == "Kungfu Panda script":
 
                 olabelk = tk.Label(root, text="Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
@@ -328,9 +354,6 @@ def show():
         obutton.pack()
 
     
-
-
-
 # Dropdown menu options
 options = [
     "File",
@@ -358,7 +381,6 @@ drop.pack()
 button = tk.Button( root , text = "SUBMIT" , command = show)
 button.config(font=("Arial", 12))
 button.pack()
-
 
 # Execute tkinter
 root.mainloop()
