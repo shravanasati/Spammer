@@ -3,7 +3,7 @@ By using this code, written in Python, you agree that you will use it for educat
 the author will not be responsible for it.
 """
 
-import smtplib, pyautogui, time, os, helium
+import smtplib, pyautogui, time, os
 pyautogui.FAILSAFE = True
 cwd = os.getcwd()
 
@@ -68,41 +68,10 @@ class Spammer:
         for _ in range(times):
             pyautogui.typewrite(keyword)
 
-    @staticmethod
-    def spam_insta(username, password, to, keyword, times):
-        helium.start_chrome("instagram.com/direct/inbox")
-        helium.write(username, into="Phone number, username, or email")
-        helium.write(password, into="Password")
-        helium.click("Log In")
-        time.sleep(5)
-
-        if helium.Button("Save Info").exists():
-            helium.click("Not Now")
-
-        if helium.Button("Turn On").exists():
-            helium.click("Not Now")
-
-        try:
-            helium.click("Send Message")
-            helium.write(to)
-            time.sleep(5)
-            helium.click(to)
-            helium.click("Next")
-        except LookupError:
-            print("Invalid username {}!".format(to))
-            quit()
-
-        time.sleep(2)
-        for _ in range(times):
-            helium.write(keyword)
-            helium.press(helium.ENTER)
-        time.sleep(5)
-        helium.kill_browser()
-
 
     def main(self):
         print("!!!!!This is the ultimate spammer!!!!!")
-        app = int(input("\nWhere to spam?\n1.File\n2.Email\n3.Youtube Live Comments\n4.Instagram\n5.Other\n"))
+        app = int(input("\nWhere to spam?\n1.File\n2.Email\n3.Youtube Live Comments\n4.Other\n"))
 
 
         # TEXT FILE
@@ -156,41 +125,13 @@ class Spammer:
                 self.spam_other(keyword, times)
                 time.sleep(5)
 
-        # INSTAGRAM SPAM
-        elif app == 4:
-            print("\nWhat to spam?\n1. Kungfu Panda script\n2. Custom keyword or phrase")
-            meme = int(input())
-
-            if meme == 1:
-                username = input("Enter your Instagram username: ")
-                password = input("Enter your Instagram password: ")
-                host = input("Enter the Instagram ID of the one you want to spam: ")
-                with open(r'kungfu_panda.txt') as f:
-                    script = f.read()
-                self.spam_insta(username, password, host, script, 1)
-
-            elif meme == 2:
-                keyword = input("Enter your custom keyword: ")
-                times = int(input("How many times: "))
-                username = input("Enter your Instagram username: ")
-                password = input("Enter your Instagram password: ")
-                host = input("Enter the Instagram ID of the one you want to spam: ")
-                try:
-                    self.spam_insta(username, password, host, keyword, times)
-                except Exception as e:
-                    print(e)
-
-            else:
-                raise Exception("Access denied!")
-
-
         # OTHER SPAM
-        elif app==5:
+        elif app == 4:
             print("\nWhat to spam?\n1. Kungfu Panda script\n2. Custom keyword or phrase")
             meme = int(input())
             
             if meme == 1:
-                check = input("Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
+                print("Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
                 with open(r'kungfu_panda.txt') as f:
                     script = f.read()
                 self.spam_other(script, 1)
@@ -198,17 +139,16 @@ class Spammer:
             elif meme == 2:
                 keyword = input("Enter your custom keyword: ")
                 times = int(input("How many times: "))
-                check = input("Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
+                print("Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
                 self.spam_other(keyword+"\n", times)
 
             else:
                 raise Exception("Access denied!")
             
-
         else:
             raise Exception("Access denied!")
 
-        print("!!!!Spamming task successfuly executed!!!!")
+        print("!!!!Spamming task successfully executed!!!!")
 
 
 
