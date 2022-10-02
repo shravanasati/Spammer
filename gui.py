@@ -148,97 +148,6 @@ def show():
         ytlabel0.config(font=("Arial", 14), wraplength=600)
         ytlabel0.pack()
 
-        
-
-    elif clicked.get() == "Instagram":
-
-        foptions = ["Kungfu Panda script", "Custom keyword or phrase"]
-
-        flabel = tk.Label(root, text="What do you wish to spam?")
-        flabel.config(font=("Arial", 16))
-        flabel.pack()
-
-        fwish= tk.StringVar()
-        fwish.set("Kungfu Panda script")
-        fdrop = tk.OptionMenu( root , fwish , *foptions )
-        fdrop.config(font=("Arial", 12))
-        fdrop.pack()
-
-        def instashow():
-
-            fdrop.config(state="disabled")
-            var = fwish.get()
-
-            if var == "Custom keyword or phrase":
-                instalabel1 = tk.Label(root, text="Enter your custom keyword:")
-                instalabel1.config(font=("Arial", 16))
-                instalabel1.pack()
-                    
-                instatext1 = tk.Text(root, height=1, width=100)
-                instatext1.config(font=("Arial", 16))
-                instatext1.pack(padx=10, pady=10)
-
-                instalabel2 = tk.Label(root, text="How many times do you want to spam?")
-                instalabel2.config(font=("Arial", 16))
-                instalabel2.pack()
-                    
-                instatext2 = tk.Text(root, height=1, width=100)
-                instatext2.config(font=("Arial", 16))
-                instatext2.pack(padx=10, pady=10)
-
-                instalabel3 = tk.Label(root, text="Enter your Instagram username:")
-                instalabel3.config(font=("Arial", 16))
-                instalabel3.pack()
-                    
-                instatext3 = tk.Text(root, height=1, width=100)
-                instatext3.config(font=("Arial", 16))
-                instatext3.pack(padx=10, pady=10)
-
-                instalabel4 = tk.Label(root, text="Enter your Instagram password:")
-                instalabel4.config(font=("Arial", 16))
-                instalabel4.pack()
-                    
-                instatext4 = tk.Text(root, height=1, width=100)
-                instatext4.config(font=("Arial", 16))
-                instatext4.pack(padx=10, pady=10)
-
-                instalabel5 = tk.Label(root, text="Enter the Instagram ID of the person you want to spam:")
-                instalabel5.config(font=("Arial", 16), wraplength=600)
-                instalabel5.pack()
-                    
-                instatext5 = tk.Text(root, height=1, width=100)
-                instatext5.config(font=("Arial", 16))
-                instatext5.pack(padx=10, pady=10)
-
-            elif var == "Kungfu Panda script":
-
-                instalabel6 = tk.Label(root, text="Enter your Instagram username:")
-                instalabel6.config(font=("Arial", 16))
-                instalabel6.pack()
-                    
-                instatext6 = tk.Text(root, height=1, width=100)
-                instatext6.config(font=("Arial", 16))
-                instatext6.pack(padx=10, pady=10)
-
-                instalabel7 = tk.Label(root, text="Enter your Instagram password:")
-                instalabel7.config(font=("Arial", 16))
-                instalabel7.pack()
-                    
-                instatext7 = tk.Text(root, height=1, width=100)
-                instatext7.config(font=("Arial", 16))
-                instatext7.pack(padx=10, pady=10)
-
-                instalabel8 = tk.Label(root, text="Enter the Instagram ID of the person you want to spam:")
-                instalabel8.config(font=("Arial", 16), wraplength=600)
-                instalabel8.pack()
-                    
-                instatext8 = tk.Text(root, height=1, width=100)
-                instatext8.config(font=("Arial", 16))
-                instatext8.pack(padx=10, pady=10)
-
-        instabutton = tk.Button( root , text = "SUBMIT" , command = instashow)
-        instabutton.config(font=("Arial", 12))
-        instabutton.pack()
 
     elif clicked.get() == "Others":
 
@@ -295,7 +204,6 @@ options = [
     "File",
     "Email",
     "Youtube Live comments",
-    "Instagram",
     "Others"
 ]
 
