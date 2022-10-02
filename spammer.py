@@ -43,16 +43,12 @@ class Spammer:
             os.chdir(cwd)
 
     @staticmethod
-    def spam_email(keyword, times):
+    def spam_email(keyword, times, host, your_email, password, subject):
         try:
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.ehlo()
             server.starttls()
-            host = input("Enter email address to spam: ")
-            your_email = input("Enter your email: ")
-            password = input("Enter your password: ")
             server.login(your_email, password)
-            subject = input("Enter spam mail subject: ")
             body = keyword * times
             server.sendmail(your_email, host, f"Subject: {subject}\n{body}")
             server.quit()
@@ -80,7 +76,7 @@ class Spammer:
             meme = int(input())
 
             if meme==1:
-                file = input("Enter file name: ")
+                file = input("Enter filename: ")
                 path = input("Enter the directory path where this file is located: ")
                 self.spam_script_file(path, file)
 
@@ -149,7 +145,6 @@ class Spammer:
             raise Exception("Access denied!")
 
         print("!!!!Spamming task successfully executed!!!!")
-
 
 
 if __name__=='__main__':

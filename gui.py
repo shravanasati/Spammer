@@ -1,8 +1,15 @@
 import tkinter as tk
+import spammer, time
+import smtplib, pyautogui, os
 
 root = tk.Tk()
 root.title("The Ultimate Spammer")
 root.geometry("600x650")
+
+def success():
+    ending = tk.Label(root, text="!!!!Spamming task successfully executed!!!!")
+    ending.config(font=("Arial", 14), wraplength=600)
+    ending.pack()
 
 
 def show():
@@ -22,6 +29,7 @@ def show():
         fdrop = tk.OptionMenu( root , fwish , *foptions )
         fdrop.config(font=("Arial", 12))
         fdrop.pack()
+
 
         def fshow():
 
@@ -44,6 +52,17 @@ def show():
                 ktext2 = tk.Text(root, height=1, width=100)
                 ktext2.config(font=("Arial", 16))
                 ktext2.pack(padx=10, pady=10)
+
+                time.sleep(60)
+                try:
+                    sp = spammer.Spammer()
+                    file = ktext1.get("1.0", "end")
+                    path = ktext2.get("1.0", "end")
+                    sp.spam_script_file(path, file)
+                except Exception as e:
+                    print(e)
+                else:
+                    success()
 
             elif var == "Custom keyword or phrase":
                 cuslabel1 = tk.Label(root, text="Enter file name:")
@@ -78,6 +97,20 @@ def show():
                 custext4.config(font=("Arial", 16))
                 custext4.pack(padx=10, pady=10)
 
+                time.sleep(60)
+                try:
+                    sp = spammer.Spammer()
+                    file = custext1.get("1.0", "end")
+                    path = custext2.get("1.0", "end")
+                    keyword = custext3.get("1.0", "end")
+                    times = custext4.get("1.0", "end")
+                    sp.spam_file(path, file, keyword, times)
+                except Exception as e:
+                    print(e)
+                else:
+                    success()
+
+
         fbutton = tk.Button( root , text = "SUBMIT" , command = fshow)
         fbutton.config(font=("Arial", 12))
         fbutton.pack()
@@ -96,9 +129,50 @@ def show():
         fdrop.config(font=("Arial", 12))
         fdrop.pack()
 
+        ql1 = tk.Label(root, text="Enter email address to spam:")
+        ql1.config(font=("Arial", 16))
+        ql1.pack()
+                
+        qt1 = tk.Text(root, height=1, width=100)
+        qt1.config(font=("Arial", 16))
+        qt1.pack(padx=10, pady=10)
+
+
+        ql2 = tk.Label(root, text="Enter your email address:")
+        ql2.config(font=("Arial", 16))
+        ql2.pack()
+                
+        qt2 = tk.Text(root, height=1, width=100)
+        qt2.config(font=("Arial", 16))
+        qt2.pack(padx=10, pady=10)
+
+
+        ql3 = tk.Label(root, text="Enter your password:")
+        ql3.config(font=("Arial", 16))
+        ql3.pack()
+                
+        qt3 = tk.Text(root, height=1, width=100)
+        qt3.config(font=("Arial", 16))
+        qt3.pack(padx=10, pady=10)
+
+
+        ql4 = tk.Label(root, text="Enter the subject:")
+        ql4.config(font=("Arial", 16))
+        ql4.pack()
+                
+        qt4 = tk.Text(root, height=1, width=100)
+        qt4.config(font=("Arial", 16))
+        qt4.pack(padx=10, pady=10)
+
         def eshow():
+
             fdrop.config(state="disabled")
             var = fwish.get()
+            host = qt1.get("1.0", "end")
+            your_email = qt2.get("1.0", "end")
+            password = qt3.get("1.0", "end")
+            subject = qt4.get("1.0", "end")
+
             if var == "Custom keyword or phrase":
                 elabel1 = tk.Label(root, text="Enter your custom keyword:")
                 elabel1.config(font=("Arial", 16))
@@ -116,14 +190,35 @@ def show():
                 etext2.config(font=("Arial", 16))
                 etext2.pack(padx=10, pady=10)
 
+
+                keyword = etext1.get("1.0", "end")
+                times = etext2.get("1.0", "end")
+                
+                try:
+                    sp = spammer.Spammer()
+                    sp.spam_email(f"{keyword}\n", times, host, your_email, password, subject)
+                except Exception as e:
+                    print(e)
+                else:
+                    success()
+
+            elif var == "Kungfu Panda script":
+                script_file = open(r'kungfu_panda.txt', 'r')
+                script = script_file.read()
+                try:
+                    sp = spammer.Spammer()
+                    sp.spam_email(script, 1, host, your_email, password, subject)
+                except Exception as e:
+                    print(e)
+                else:
+                    success()
+
         ebutton = tk.Button( root , text = "SUBMIT" , command = eshow)
         ebutton.config(font=("Arial", 12))
         ebutton.pack()
 
     elif clicked.get() == "Youtube Live comments":
 
-    
-            
         ytlabel = tk.Label(root, text="Open the youtube video with comment section on.")
         ytlabel.config(font=("Arial", 14), wraplength=600)
         ytlabel.pack()
@@ -148,6 +243,18 @@ def show():
         ytlabel0.config(font=("Arial", 14), wraplength=600)
         ytlabel0.pack()
 
+        try:
+            sp = spammer.Spammer()
+            keyword = yttext1.get("1.0", "end")
+            times = yttext2.get("1.0", "end")
+            time.sleep(10)
+            for _ in range(times):
+                sp.spam_other(keyword, times)
+                time.sleep(5)
+        except Exception as e:
+            print(e)
+        else:
+            success()
 
     elif clicked.get() == "Others":
 
@@ -169,6 +276,7 @@ def show():
             var = fwish.get()
 
             if var == "Custom keyword or phrase":
+
                 olabel1 = tk.Label(root, text="Enter your custom keyword:")
                 olabel1.config(font=("Arial", 16))
                 olabel1.pack()
@@ -188,15 +296,39 @@ def show():
                 olabel = tk.Label(root, text="Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
                 olabel.config(font=("Arial", 14), wraplength=600)
                 olabel.pack()
+
+                try:
+                    sp = spammer.Spammer()
+                    keyword = otext1.get("1.0", "end")
+                    times = otext2.get("1.0", "end")
+                    sp.spam_other(keyword+"\n", times)
+                except Exception as e:
+                    print(e)
+                else:
+                    success()
             
             elif var == "Kungfu Panda script":
+
                 olabelk = tk.Label(root, text="Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
                 olabelk.config(font=("Arial", 14), wraplength=600)
                 olabelk.pack()
+                
+                try:
+                    sp = spammer.Spammer()
+                    with open(r'kungfu_panda.txt') as f:
+                        script = f.read()
+                    sp.spam_other(script, 1)
+                except Exception as e:
+                    print(e)
+                else:
+                    success()
 
         obutton = tk.Button( root , text = "SUBMIT" , command = oshow)
         obutton.config(font=("Arial", 12))
         obutton.pack()
+
+    
+
 
 
 # Dropdown menu options
