@@ -1,10 +1,9 @@
 import tkinter as tk
 import spammer, time
-import smtplib, pyautogui, os
 
 root = tk.Tk()
 root.title("The Ultimate Spammer")
-root.geometry("600x650")
+root.geometry("600x800")
 
 def success():
     ending = tk.Label(root, text="!!!!Spamming task successfully executed!!!!")
@@ -182,6 +181,19 @@ def show():
             subject = qt4.get("1.0", "end")
 
             if var == "Custom keyword or phrase":
+                def spam_email_c():
+
+                    keyword = etext1.get("1.0", "end")
+                    times = int(etext2.get("1.0", "end"))
+                    
+                    try:
+                        sp = spammer.Spammer()
+                        sp.spam_email(f"{keyword}\n", times, host, your_email, password, subject)
+                    except Exception as e:
+                        print(e)
+                    else:
+                        success()
+
                 elabel1 = tk.Label(root, text="Enter your custom keyword:")
                 elabel1.config(font=("Arial", 16))
                 elabel1.pack()
@@ -202,18 +214,6 @@ def show():
                 ebtn1.config(font=("Arial", 12))
                 ebtn1.pack()
 
-                def spam_email_c():
-
-                    keyword = etext1.get("1.0", "end")
-                    times = etext2.get("1.0", "end")
-                    
-                    try:
-                        sp = spammer.Spammer()
-                        sp.spam_email(f"{keyword}\n", times, host, your_email, password, subject)
-                    except Exception as e:
-                        print(e)
-                    else:
-                        success()
 
             elif var == "Kungfu Panda script":
                 try:
