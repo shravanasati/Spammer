@@ -131,7 +131,7 @@ class Spammer:
             meme = int(input())
             
             if meme == 1:
-                print("Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
+                input("Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
                 with open(r'kungfu_panda.txt') as f:
                     script = f.read()
                 self.spam_other(script, 1)
@@ -139,7 +139,7 @@ class Spammer:
             elif meme == 2:
                 keyword = input("Enter your custom keyword: ")
                 times = int(input("How many times: "))
-                print("Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
+                input("Open the application where you want to spam. Press enter once you've done it and then switch to that application and place the cursor to the 'type message' box.")
                 self.spam_other(keyword+"\n", times)
 
             else:
