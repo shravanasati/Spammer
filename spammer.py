@@ -14,8 +14,15 @@ class Spammer:
     @staticmethod
     def spam_script_file(filepath, filename):
         try:
-            os.chdir(filepath)
-            f = open(f"{filename}", 'a')
+            # os.chdir(filepath)
+            # f = open(f"{filename}", 'a')
+            # script_file = open('kungfu_panda.txt', 'r')
+            # script = script_file.read()
+            # f.write(script)
+            # f.close()
+            # script_file.close()
+            
+            f = open(f"{os.path.join(filepath,filename)}", 'a')
             script_file = open('kungfu_panda.txt', 'r')
             script = script_file.read()
             f.write(script)
@@ -63,6 +70,7 @@ class Spammer:
         time.sleep(10)
         for _ in range(times):
             pyautogui.typewrite(keyword)
+            pyautogui.press("Enter")
 
 
     def main(self):
