@@ -14,13 +14,6 @@ class Spammer:
     @staticmethod
     def spam_script_file(filepath, filename):
         try:
-            # os.chdir(filepath)
-            # f = open(f"{filename}", 'a')
-            # script_file = open('kungfu_panda.txt', 'r')
-            # script = script_file.read()
-            # f.write(script)
-            # f.close()
-            # script_file.close()
             
             f = open(f"{os.path.join(filepath,filename)}", 'a')
             script_file = open('kungfu_panda.txt', 'r')
