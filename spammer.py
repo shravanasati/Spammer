@@ -4,7 +4,6 @@ the author will not be responsible for it.
 """
 
 import smtplib, pyautogui, time, os
-pyautogui.FAILSAFE = True
 cwd = os.getcwd()
 
 class Spammer:
